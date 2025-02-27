@@ -1,0 +1,69 @@
+<script type="text/javascript">
+  RED.nodes.registerType('uspmp-close', {
+    category: 'uspmp',
+    color: '#286f9c4d',
+    defaults: {
+      tlsConfig: {
+        type: 'tls-config',
+        value: '',
+        required: true,
+      },
+      deliveryIdProperty: {
+        value: '',
+        required: false
+      },
+      name: {
+        value: '',
+      },
+    },
+    oneditprepare: function() {
+      $("#node-input-deliveryIdProperty").typedInput({
+        type: 'msg',
+        types: ['msg'],
+      })
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'font-awesome/fa-envelope-o',
+    label: function() {
+      return this.name || 'uspmp close'
+    }
+  })
+</script>
+
+<script type="text/html" data-template-name="uspmp-close">
+  <div class="form-row">
+    <label for="node-input-tlsConfig"><i class="fa fa-server"></i> TLS config</label>
+    <input type="text" id="node-input-tlsConfig">
+  </div>
+  <div class="form-row">
+    <label for="node-input-deliveryIdProperty">ID property</label>
+    <input type="text" id="node-input-deliveryIdProperty">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+</script>
+
+<script type="text/markdown" data-help-name="uspmp-close">
+This node closes a new delivery of *Mein Postkorb* of the Austrian [Unternehmensserviceportal](https://www.usp.gv.at/).
+
+### Outputs
+
+: payload.id (string) : ID of the delivery that should be closed. You can override the property name and specify which input property should be used instead in node properties.
+
+### Outputs
+
+: payload (object) : Boolean *true*, if close request successful
+
+### Details
+
+A TLS configuration is required to access Mein Postkorb. You can specify which input property is used for the ID of the delivery to be closed (Default: `payload.id`).
+
+### References
+
+[Mein Postkorb Automatische Abholung HowTo](https://www.usp.gv.at/at.gv.mpk-p/aadocs/Mein_Postkorb_AutomatischeAbholung_HowTo.pdf)
+
+[GitHub](https://github.com/vrilcode/node-red-uspmp) - GitHub repository of this node
+</script>

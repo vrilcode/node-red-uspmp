@@ -1,0 +1,36 @@
+{
+  "name": "node-red-uspmp",
+  "description": "USP Mein Postkorb Autoabholung node for Node-RED",
+  "version": "1.0.0",
+  "keywords": [
+    "node-red",
+    "mein-postkorb",
+    "usp",
+    "unternehmensserviceportal"
+  ],
+  "license": "GPL",
+  "homepage": "https://github.com/vrilcode/node-red-uspmp",
+  "author": "vrilcode (https://github.com/vrilcode)",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vrilcode/node-red-uspmp.git"
+  },
+  "scripts": {
+    "client": "node --env-file=.env -- contrib/uspmp-client.mjs",
+    "publish": "npm publish --access public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "node-red": {
+    "version": ">=4.0.0",
+    "nodes": {
+      "uspmp-close": "uspmp-close.js",
+      "uspmp-get": "uspmp-get.js"
+    }
+  },
+  "dependencies": {
+    "axios": "~1.7.9",
+    "cheerio": "^1.0.0"
+  }
+}

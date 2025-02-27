@@ -1,0 +1,72 @@
+<script type="text/javascript">
+  RED.nodes.registerType('uspmp-get', {
+    category: 'uspmp',
+    color: '#286f9c4d',
+    defaults: {
+      tlsConfig: {
+        type: 'tls-config',
+        value: '',
+        required: true,
+      },
+      newDeliveriesOnly: {
+        value: 'yes',
+        required: true,
+      },
+      name: {
+        value: '',
+      },
+    },
+    oneditprepare: function() {
+      $("#node-input-newDeliveriesOnly").typedInput({
+        types: [
+          {
+            value: 'newDeliveriesOnly',
+            options: [
+                { value: 'yes', label: 'Yes'},
+                { value: 'no', label: 'No'},
+            ]
+          }
+        ]
+      })
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'font-awesome/fa-envelope-o',
+    label: function() {
+      return this.name || 'uspmp get'
+    }
+  })
+</script>
+
+<script type="text/html" data-template-name="uspmp-get">
+  <div class="form-row">
+    <label for="node-input-tlsConfig"><i class="fa fa-server"></i> TLS config</label>
+    <input type="text" id="node-input-tlsConfig">
+  </div>
+  <div class="form-row">
+    <label for="node-input-newDeliveriesOnly"><i class="fa fa-star"></i> New only?</label>
+    <input type="text" id="node-input-newDeliveriesOnly">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+</script>
+
+<script type="text/markdown" data-help-name="uspmp-get">
+This node retrieves deliveries of *Mein Postkorb* of the Austrian [Unternehmensserviceportal](https://www.usp.gv.at/).
+
+### Outputs
+
+: payload (object) : Array of deliveries
+
+### Details
+
+A TLS configuration is required to access Mein Postkorb. If you want to request only new deliveries (not closed), make sure that "New only?" is set to "Yes".
+
+### References
+
+[Mein Postkorb Automatische Abholung HowTo](https://www.usp.gv.at/at.gv.mpk-p/aadocs/Mein_Postkorb_AutomatischeAbholung_HowTo.pdf)
+
+[GitHub](https://github.com/vrilcode/node-red-uspmp) - GitHub repository of this node
+</script>
