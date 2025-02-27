@@ -16,4 +16,3 @@ You can use this package also with your regular JS/TS application without Node-R
 
 * Austrian [Unternehmensserviceportal](https://www.usp.gv.at/)
 * [Mein Postkorb Automatische Abholung HowTo](https://www.usp.gv.at/at.gv.mpk-p/aadocs/Mein_Postkorb_AutomatischeAbholung_HowTo.pdf)
-* [GitHub](https://github.com/vrilcode/node-red-uspmp) - GitHub repository of this node
